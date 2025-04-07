@@ -19,6 +19,12 @@ class CheckoutSolution:
         
         free_b_count = count["E"] // 2
         remaining_b = max(0, count["B"] - free_b_count)
+
+        free_m_count = count["N"] // 3
+        remaining_m = max(0, count["M"] - free_m_count)
+
+        free_q_count = count["R"] // 3
+        remaining_q = max(0, count["Q"] - free_q_count)
  
         total_price = 0
 
@@ -43,7 +49,28 @@ class CheckoutSolution:
                 f_free = value // 3
                 value -= f_free
                 total_price += value * prices["F"]
+            elif sku == "H":
+                five_h_offers = value // 5
+                total_price += five_h_offers * 80
+                value -= five_h_offers * 5
+
+                three_h_offers = value // 3
+                total_price += three_h_offers * 45
+                value -= three_h_offers * 3
+
+                total_price += value * prices["H"]
+            elif sku == "K":
+                k_offers = value // 2
+                total_price += k_offers * 45
+                value -= k_offers * 2
+
+                total_price += value * prices["K"]
+            elif sku == "U":
+                u_free = value // 4
+                value -= u_free
+                total_price += value * prices["U"]
             else:
                 total_price += value * prices[sku]
 
         return total_price
+

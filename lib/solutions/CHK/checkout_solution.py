@@ -26,4 +26,4 @@ class CheckoutSolution:
 
                 total_price += offer_price * num_offers + remaining * prices[k]
 
-            return total_price
+        return total_price

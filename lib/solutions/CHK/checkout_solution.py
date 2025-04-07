@@ -50,18 +50,18 @@ class CheckoutSolution:
                 value -= f_free
                 total_price += value * prices["F"]
             elif sku == "H":
-                five_h_offers = value // 5
-                total_price += five_h_offers * 80
-                value -= five_h_offers * 5
+                ten_h_offers = value // 10
+                total_price += ten_h_offers * 80
+                value -= ten_h_offers * 10
 
-                three_h_offers = value // 3
-                total_price += three_h_offers * 45
-                value -= three_h_offers * 3
+                five_h_offers = value // 5
+                total_price += five_h_offers * 45
+                value -= five_h_offers * 5
 
                 total_price += value * prices["H"]
             elif sku == "K":
                 k_offers = value // 2
-                total_price += k_offers * 45
+                total_price += k_offers * 150
                 value -= k_offers * 2
 
                 total_price += value * prices["K"]
@@ -69,8 +69,11 @@ class CheckoutSolution:
                 u_free = value // 4
                 value -= u_free
                 total_price += value * prices["U"]
+            elif sku == "M":
+                total_price += remaining_m * prices["M"]
             else:
                 total_price += value * prices[sku]
 
         return total_price
+
 

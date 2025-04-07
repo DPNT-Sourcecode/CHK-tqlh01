@@ -17,6 +17,8 @@ class CheckoutSolution:
             else:
                 return -1
         
+        total_price = 0
+        
         grouped_items = ["S","T","X","Y","Z"]
         group_counts = {item: count[item] for item in grouped_items}
 
@@ -39,7 +41,7 @@ class CheckoutSolution:
             
         for item in grouped_items:
             count[item] = group_counts[item]
-            
+
         free_b_count = count["E"] // 2
         remaining_b = max(0, count["B"] - free_b_count)
 
@@ -49,7 +51,6 @@ class CheckoutSolution:
         free_q_count = count["R"] // 3
         remaining_q = max(0, count["Q"] - free_q_count)
  
-        total_price = 0
 
         for sku, value in count.items():
             if sku == "A":
@@ -120,5 +121,6 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
+
 
 

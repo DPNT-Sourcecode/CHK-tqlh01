@@ -19,8 +19,7 @@ class CheckoutSolution:
  
         total_price = 0
 
-        for item in count:
-            sku, value = item
+        for sku, value in count.items():
             if sku == "A":
                 five_a_offers = value // 5
                 total_price += five_a_offers * 200

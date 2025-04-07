@@ -71,9 +71,32 @@ class CheckoutSolution:
                 total_price += value * prices["U"]
             elif sku == "M":
                 total_price += remaining_m * prices["M"]
+            elif sku == "P":
+                p_offers = value // 5
+                total_price += p_offers * 200
+                value -= p_offers * 5
+
+                total_price += value * prices["P"]
+            elif sku == "Q":
+                q_offers = remaining_q // 3
+                total_price += q_offers * 80
+                remaining_q -= q_offers * 3
+
+                total_price += remaining_q * prices["Q"]
+            elif sku == "V":
+                three_q_offers = value // 3
+                total_price += three_q_offers * 130
+                value -= three_q_offers * 3
+
+                two_h_offers = value // 2
+                total_price += two_h_offers * 90
+                value -= two_h_offers * 2
+
+                total_price += value * prices["V"]
             else:
                 total_price += value * prices[sku]
 
         return total_price
+
 
 

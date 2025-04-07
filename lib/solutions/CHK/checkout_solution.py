@@ -19,6 +19,16 @@ class CheckoutSolution:
         
         grouped_items = ["S","T","X","Y","Z"]
         group_counts = {item: count[item] for item in grouped_items}
+
+        sorted_group_counts = sorted(grouped_items, key=lambda item: prices[item], reverse=True)
+
+        group_offers = sum(group_counts.values()) // 3
+
+        remaining_group_items = sum(group_counts.values()) - group_offers
+        if group_offers > 0:
+            total_price += group_offers * 45
+            remaining_group_items -= group_offers * 3
+
         free_b_count = count["E"] // 2
         remaining_b = max(0, count["B"] - free_b_count)
 
@@ -99,3 +109,4 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
+

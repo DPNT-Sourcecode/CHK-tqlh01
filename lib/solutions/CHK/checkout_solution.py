@@ -29,6 +29,17 @@ class CheckoutSolution:
             total_price += group_offers * 45
             remaining_group_items -= group_offers * 3
 
+            items_to_reduce = group_offers * 3
+            for item in sorted_group_counts:
+                reduce_by = min(group_counts[item], items_to_reduce)
+                group_counts[item] -= reduce_by
+                items_to_reduce -= reduce_by
+                if items_to_reduce == 0:
+                    break
+            
+        for item in grouped_items:
+            count[item] = group_counts[item]
+            
         free_b_count = count["E"] // 2
         remaining_b = max(0, count["B"] - free_b_count)
 
@@ -109,4 +120,5 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
+
 

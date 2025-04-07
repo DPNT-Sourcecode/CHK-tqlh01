@@ -17,6 +17,8 @@ class CheckoutSolution:
             else:
                 return -1
         
+        grouped_items = ["S","T","X","Y","Z"]
+        group_counts = {item: count[item] for item in grouped_items}
         free_b_count = count["E"] // 2
         remaining_b = max(0, count["B"] - free_b_count)
 

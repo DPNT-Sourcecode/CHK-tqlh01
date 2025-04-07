@@ -3,10 +3,10 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
+        prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10}
         # offers = {"A": [(5, 200), (3, 130)], "B": [(2, 45)], "C": [None], "D": [None], "E": [None]}
 
-        count = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
+        count = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
 
         for sku in skus:
             if sku in count:
@@ -36,9 +36,11 @@ class CheckoutSolution:
                 remaining_b -= b_offers * 2
 
                 total_price += remaining_b * prices["B"]
+            elif sku == "F":
+                f_free = value // 3
+                value -= f_free
+                total_price += value * prices["F"]
             else:
                 total_price += value * prices[sku]
 
         return total_price
-
-

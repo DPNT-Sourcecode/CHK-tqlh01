@@ -31,9 +31,12 @@ class CheckoutSolution:
                 value -= three_a_offers
 
                 total_price += value * prices["A"]
-    
-        
+            elif sku == "B":
+                b_offers = remaining_b // 2
+                total_price += b_offers * 45
 
-
+                total_price += value * prices["B"]
+            else:
+                total_price += value * prices["sku"]
 
         return total_price

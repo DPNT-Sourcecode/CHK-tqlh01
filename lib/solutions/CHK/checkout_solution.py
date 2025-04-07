@@ -19,15 +19,21 @@ class CheckoutSolution:
  
         total_price = 0
 
-        a_count = count["A"]
-        five_a_offers = a_count // 5
-        total_price += five_a_offers * 200
-        a_count -= five_a_offers
+        for item in count:
+            sku, value = item
+            if sku == "A":
+                five_a_offers = value // 5
+                total_price += five_a_offers * 200
+                value -= five_a_offers
 
-        three_a_offers = a_count // 3
-        total_price += three_a_offers * 130
-        a_count -= three_a_offers
+                three_a_offers = value // 3
+                total_price += three_a_offers * 130
+                value -= three_a_offers
 
-        total_price += a_count * prices["A"]
+                total_price += value * prices["A"]
+    
+        
+
+
 
         return total_price

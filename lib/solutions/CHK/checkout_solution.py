@@ -15,7 +15,7 @@ class CheckoutSolution:
                 return -1
         
         free_b_count = count["E"] // 2
-        remaining_b = count["B"] - free_b_count
+        remaining_b = max(0, count["B"] - free_b_count)
  
         total_price = 0
 
@@ -40,3 +40,4 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
+

@@ -4,7 +4,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
-        offers = {"A": [(5, 200), (3, 130)], "B": [(2, 45)], "C": [None], "D": [None], "E": [(2, 0, "B")]}
+        offers = {"A": [(5, 200), (3, 130)], "B": [(2, 45)], "C": [None], "D": [None], "E": [None]}
 
         count = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
 
@@ -28,12 +28,14 @@ class CheckoutSolution:
             if offers[item] is None:
                 total_price += item_count * prices[item]
             else:
-                for offer in offers:
-                    offer_count, offer_price
-                # offer_count, offer_price = offers[k]
-                # num_offers = v // offer_count
-                # remaining = v % offer_count
+                offers_list = offers[item]
+                if len(offers_list) >= 1:
+                    for offer in offers_list:
+                        offer_count, offer_price = offer[item]
+                        
+                        num_offers = item_count // offer_count
+                        remaining = item_count % offer_count
 
-                # total_price += offer_price * num_offers + remaining * prices[k]
+                        total_price += offer_price * num_offers + remaining * prices[item]
 
         return total_price

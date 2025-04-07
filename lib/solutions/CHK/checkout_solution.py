@@ -18,18 +18,17 @@ class CheckoutSolution:
                 return -1
         
         total_price = 0
-        
+
         grouped_items = ["S","T","X","Y","Z"]
         group_counts = {item: count[item] for item in grouped_items}
 
         sorted_group_counts = sorted(grouped_items, key=lambda item: prices[item], reverse=True)
 
-        group_offers = sum(group_counts.values()) // 3
+        total_group_count = sum(group_counts.values())
+        group_offers =  total_group_count // 3
 
-        remaining_group_items = sum(group_counts.values()) - group_offers
         if group_offers > 0:
             total_price += group_offers * 45
-            remaining_group_items -= group_offers * 3
 
             items_to_reduce = group_offers * 3
             for item in sorted_group_counts:
@@ -121,6 +120,7 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
+
 
 
 

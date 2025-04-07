@@ -97,6 +97,3 @@ class CheckoutSolution:
                 total_price += value * prices[sku]
 
         return total_price
-
-
-

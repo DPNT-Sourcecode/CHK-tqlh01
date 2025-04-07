@@ -23,17 +23,17 @@ class CheckoutSolution:
             if sku == "A":
                 five_a_offers = value // 5
                 total_price += five_a_offers * 200
-                value -= five_a_offers
+                value -= five_a_offers * 5
 
                 three_a_offers = value // 3
                 total_price += three_a_offers * 130
-                value -= three_a_offers
+                value -= three_a_offers * 3
 
                 total_price += value * prices["A"]
             elif sku == "B":
                 b_offers = remaining_b // 2
                 total_price += b_offers * 45
-                remaining_b -= b_offers
+                remaining_b -= b_offers * 2
 
                 total_price += value * prices["B"]
             else:
